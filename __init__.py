@@ -13,6 +13,12 @@ bl_info = {
 import bpy
 from bpy.types import Menu
 
+import bgi_operator_classes
+
+import importlib
+
+importlib.reload(bgi_operator_classes)
+
 class VIEW3D_MT_board_game_insert_add(Menu):
     bl_idname = "VIEW3D_MT_board_game_insert_add"
     bl_label = "Board Game Insert"
@@ -20,6 +26,8 @@ class VIEW3D_MT_board_game_insert_add(Menu):
     def draw(self, context):
         layout = self.layout
         layout.operator_context = 'INVOKE_REGION_WIN'
+        layout.operator("mesh.game_box_add",
+                        text="Game Box")
 
 def menu_func(self, context):
     layout = self.layout
@@ -30,6 +38,7 @@ def menu_func(self, context):
                 text="Board Game Insert", icon="DECORATE")
 
 classes = [
+    bgi_operator_classes.AddGameBox,
     VIEW3D_MT_board_game_insert_add
 ]
 
