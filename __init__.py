@@ -28,6 +28,8 @@ class VIEW3D_MT_board_game_insert_add(Menu):
         layout.operator_context = 'INVOKE_REGION_WIN'
         layout.operator("mesh.game_box_add",
                         text="Game Box")
+        layout.operator("mesh.card_holder_horizontal_add",
+                        text="Card Holder Horizontal")
 
 def menu_func(self, context):
     layout = self.layout
@@ -39,6 +41,7 @@ def menu_func(self, context):
 
 classes = [
     bgi_operator_classes.AddGameBox,
+    bgi_operator_classes.AddCardHolderHorizontal,
     VIEW3D_MT_board_game_insert_add
 ]
 
