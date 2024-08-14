@@ -1,12 +1,6 @@
 import bpy
 
-import bgi_divisor
-
-import importlib
-
-importlib.reload(bgi_divisor)
-
-from bgi_divisor import bgi_divisor_create
+from .bgi_divisor import bgi_divisor_create
 
 #initialize bgi_sides node group
 def bgi_sides_node_group(bgi_divisor):

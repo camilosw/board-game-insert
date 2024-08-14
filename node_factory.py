@@ -1,22 +1,10 @@
 import bpy
 from enum import Enum
 
-import bgi_game_box
-import bgi_cut_top
-import bgi_container
-import bgi_card_holder_horizontal
-
-import importlib
-
-importlib.reload(bgi_game_box)
-importlib.reload(bgi_cut_top)
-importlib.reload(bgi_container)
-importlib.reload(bgi_card_holder_horizontal)
-
-from bgi_game_box import bgi_game_box_node_group
-from bgi_cut_top import bgi_cut_top_node_group
-from bgi_container import bgi_container_create
-from bgi_card_holder_horizontal import bgi_card_holder_horizontal_create
+from .bgi_game_box import bgi_game_box_node_group
+from .bgi_cut_top import bgi_cut_top_node_group
+from .bgi_container import bgi_container_create
+from .bgi_card_holder_horizontal import bgi_card_holder_horizontal_create
 
 class BGI_Node(Enum):
     GAME_BOX = 'BGI Game Box'

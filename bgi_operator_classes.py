@@ -2,13 +2,7 @@ import bpy
 from bpy.types import Operator
 from bpy_extras.object_utils import object_data_add
 
-import node_factory
-
-import importlib
-
-importlib.reload(node_factory)
-
-from node_factory import create_node, BGI_Node
+from .node_factory import create_node, BGI_Node
 
 class AddGameBox(Operator):
     bl_idname = "mesh.gbi_game_box_add"

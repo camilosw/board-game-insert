@@ -10,14 +10,10 @@ bl_info = {
     "category": "Add Mesh",
 }
 
+from . import bgi_operator_classes
+
 import bpy
 from bpy.types import Menu
-
-import bgi_operator_classes
-
-import importlib
-
-importlib.reload(bgi_operator_classes)
 
 class VIEW3D_MT_board_game_insert_add(Menu):
     bl_idname = "VIEW3D_MT_board_game_insert_add"
