@@ -3,21 +3,25 @@ from enum import Enum
 
 import bgi_game_box
 import bgi_cut_top
+import bgi_container
 import bgi_card_holder_horizontal
 
 import importlib
 
 importlib.reload(bgi_game_box)
 importlib.reload(bgi_cut_top)
+importlib.reload(bgi_container)
 importlib.reload(bgi_card_holder_horizontal)
 
 from bgi_game_box import bgi_game_box_node_group
 from bgi_cut_top import bgi_cut_top_node_group
-from bgi_card_holder_horizontal import bgi_card_holder_horizontal
+from bgi_container import bgi_container_create
+from bgi_card_holder_horizontal import bgi_card_holder_horizontal_create
 
 class BGI_Node(Enum):
     GAME_BOX = 'BGI Game Box'
     CUT_TOP = 'BGI Cut Top'
+    CONTAINER = 'BGI Container'
     CARD_HOLDER_HORIZONTAL = 'BGI Card Holder Horizontal'
 
 def create_node(node: BGI_Node):
@@ -29,8 +33,10 @@ def create_node(node: BGI_Node):
                 node_group = bgi_game_box_node_group()
             case BGI_Node.CUT_TOP:
                 node_group = bgi_cut_top_node_group()
+            case BGI_Node.CONTAINER:
+                node_group = bgi_container_create()
             case BGI_Node.CARD_HOLDER_HORIZONTAL:
-                node_group = bgi_card_holder_horizontal()
+                node_group = bgi_card_holder_horizontal_create()
             case _:
                 raise NameError("Node group doesn't exist: " + node.value)
         

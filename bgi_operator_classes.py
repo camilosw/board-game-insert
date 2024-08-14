@@ -28,7 +28,42 @@ class AddGameBox(Operator):
         bpy.context.object.modifiers["Solidify"].use_even_offset = True
 
         return {'FINISHED'}
-    
+
+class AddContainer(Operator):
+    bl_idname = "mesh.container_add"
+    bl_label = "Container"
+    bl_description = "Add the Container object"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        mesh = bpy.data.meshes.new("Container")
+        object_data_add(context, mesh, operator=None)
+        parent = bpy.context.object
+        
+        create_node(BGI_Node.CONTAINER)
+        cut_top_modifier = create_node(BGI_Node.CUT_TOP)
+
+        bpy.ops.mesh.primitive_plane_add(size=0.5, 
+                                enter_editmode=False, 
+                                align='WORLD', 
+                                location=(0, 0, 0.01),
+                                scale=(1, 1, 1))
+
+        bpy.ops.object.mode_set(mode='EDIT', toggle=False)
+        bpy.ops.mesh.flip_normals()
+        bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+
+        plane = bpy.context.object
+        plane.name = 'CutPlane'
+        plane.data.name = 'CutPlane'
+        plane.display_type = 'WIRE'
+        plane.parent = parent
+        plane.hide_set(True)
+
+        cut_top_modifier["Socket_2"] = plane
+
+        return {'FINISHED'}
+
 class AddCardHolderHorizontal(Operator):
     bl_idname = "mesh.card_holder_horizontal_add"
     bl_label = "Card Holder Horizontal"

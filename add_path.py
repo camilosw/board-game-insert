@@ -1,3 +1,5 @@
+# Only for development purposes
+
 import bpy
 import sys
 import os 
