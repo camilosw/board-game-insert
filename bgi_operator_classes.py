@@ -11,7 +11,7 @@ importlib.reload(node_factory)
 from node_factory import create_node, BGI_Node
 
 class AddGameBox(Operator):
-    bl_idname = "mesh.game_box_add"
+    bl_idname = "mesh.gbi_game_box_add"
     bl_label = "Game Box"
     bl_description = "Add the Game Box object"
     bl_options = {'REGISTER', 'UNDO'}
@@ -30,7 +30,7 @@ class AddGameBox(Operator):
         return {'FINISHED'}
 
 class AddContainer(Operator):
-    bl_idname = "mesh.container_add"
+    bl_idname = "mesh.gbi_container_add"
     bl_label = "Container"
     bl_description = "Add the Container object"
     bl_options = {'REGISTER', 'UNDO'}
@@ -65,7 +65,7 @@ class AddContainer(Operator):
         return {'FINISHED'}
 
 class AddCardHolderHorizontal(Operator):
-    bl_idname = "mesh.card_holder_horizontal_add"
+    bl_idname = "mesh.gbi_card_holder_horizontal_add"
     bl_label = "Card Holder Horizontal"
     bl_description = "Add the Card Holder Horizontal object"
     bl_options = {'REGISTER', 'UNDO'}
