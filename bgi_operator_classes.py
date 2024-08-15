@@ -56,6 +56,9 @@ class AddContainer(Operator):
 
         cut_top_modifier["Socket_2"] = plane
 
+        bpy.ops.object.select_all(action='DESELECT')
+        parent.select_set(True)
+
         return {'FINISHED'}
 
 class AddCardHolderHorizontal(Operator):
@@ -90,5 +93,8 @@ class AddCardHolderHorizontal(Operator):
         plane.hide_set(True)
 
         cut_top_modifier["Socket_2"] = plane
+
+        bpy.ops.object.select_all(action='DESELECT')
+        parent.select_set(True)
 
         return {'FINISHED'}
