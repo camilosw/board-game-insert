@@ -13,6 +13,7 @@ class AddGameBox(Operator):
     def execute(self, context):
         mesh = bpy.data.meshes.new("GameBox")
         object_data_add(context, mesh, operator=None)
+        bpy.context.object.show_wire = True
 
         create_node(BGI_Node.GAME_BOX)
 
@@ -33,6 +34,7 @@ class AddContainer(Operator):
         mesh = bpy.data.meshes.new("Container")
         object_data_add(context, mesh, operator=None)
         parent = bpy.context.object
+        parent.show_wire = True
         
         create_node(BGI_Node.CONTAINER)
         cut_top_modifier = create_node(BGI_Node.CUT_TOP)
@@ -72,6 +74,7 @@ class AddCardHolderHorizontal(Operator):
         mesh = bpy.data.meshes.new("CardHolderHorizontal")
         object_data_add(context, mesh, operator=None)
         parent = bpy.context.object
+        parent.show_wire = True
         
         create_node(BGI_Node.CARD_HOLDER_HORIZONTAL)
         cut_top_modifier = create_node(BGI_Node.CUT_TOP)
