@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Board Game Insert",
     "author": "Camilo Mejia",
-    "version": (1, 0),
+    "version": (1, 0, 1),
     "blender": (4, 1, 0),
     "location": "View3D > Add > Mesh > New Object",
     "description": "Adds objects to create board game inserts",
