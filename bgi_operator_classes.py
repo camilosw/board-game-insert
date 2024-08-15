@@ -58,6 +58,7 @@ class AddContainer(Operator):
 
         bpy.ops.object.select_all(action='DESELECT')
         parent.select_set(True)
+        bpy.context.view_layer.objects.active = parent
 
         return {'FINISHED'}
 
@@ -96,5 +97,6 @@ class AddCardHolderHorizontal(Operator):
 
         bpy.ops.object.select_all(action='DESELECT')
         parent.select_set(True)
+        bpy.context.view_layer.objects.active = parent
 
         return {'FINISHED'}
