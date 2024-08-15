@@ -53,8 +53,9 @@ class AddContainer(Operator):
         plane.name = 'CutPlane'
         plane.data.name = 'CutPlane'
         plane.display_type = 'WIRE'
-        plane.parent = parent
+        plane.hide_render = True
         plane.hide_set(True)
+        plane.parent = parent
 
         cut_top_modifier["Socket_2"] = plane
 
@@ -93,8 +94,9 @@ class AddCardHolderHorizontal(Operator):
         plane.name = 'CutPlane'
         plane.data.name = 'CutPlane'
         plane.display_type = 'WIRE'
-        plane.parent = parent
+        plane.hide_render = True
         plane.hide_set(True)
+        plane.parent = parent
 
         cut_top_modifier["Socket_2"] = plane
 
