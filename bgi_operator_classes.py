@@ -4,6 +4,32 @@ from bpy_extras.object_utils import object_data_add
 
 from .node_factory import create_node, BGI_Node
 
+def create_cut_plane(parent):
+    bpy.ops.mesh.primitive_plane_add(size=0.5, 
+                                enter_editmode=False, 
+                                align='WORLD', 
+                                location=(0, 0, 0.01),
+                                scale=(1, 1, 1))
+
+    bpy.ops.object.mode_set(mode='EDIT', toggle=False)
+    bpy.ops.mesh.flip_normals()
+    bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
+
+    plane = bpy.context.object
+    plane.name = 'CutPlane'
+    plane.data.name = 'CutPlane'
+    plane.display_type = 'WIRE'
+    plane.hide_render = True
+    plane.hide_set(True)
+    plane.parent = parent
+
+    return plane
+
+def set_active(object):
+    bpy.ops.object.select_all(action='DESELECT')
+    object.select_set(True)
+    bpy.context.view_layer.objects.active = object
+
 class AddGameBox(Operator):
     bl_idname = "mesh.gbi_game_box_add"
     bl_label = "Game Box"
@@ -39,29 +65,11 @@ class AddContainer(Operator):
         create_node(BGI_Node.CONTAINER)
         cut_top_modifier = create_node(BGI_Node.CUT_TOP)
 
-        bpy.ops.mesh.primitive_plane_add(size=0.5, 
-                                enter_editmode=False, 
-                                align='WORLD', 
-                                location=(0, 0, 0.01),
-                                scale=(1, 1, 1))
-
-        bpy.ops.object.mode_set(mode='EDIT', toggle=False)
-        bpy.ops.mesh.flip_normals()
-        bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
-
-        plane = bpy.context.object
-        plane.name = 'CutPlane'
-        plane.data.name = 'CutPlane'
-        plane.display_type = 'WIRE'
-        plane.hide_render = True
-        plane.hide_set(True)
-        plane.parent = parent
+        plane = create_cut_plane(parent)
 
         cut_top_modifier["Socket_2"] = plane
 
-        bpy.ops.object.select_all(action='DESELECT')
-        parent.select_set(True)
-        bpy.context.view_layer.objects.active = parent
+        set_active(parent)
 
         return {'FINISHED'}
 
@@ -80,28 +88,10 @@ class AddCardHolderHorizontal(Operator):
         create_node(BGI_Node.CARD_HOLDER_HORIZONTAL)
         cut_top_modifier = create_node(BGI_Node.CUT_TOP)
 
-        bpy.ops.mesh.primitive_plane_add(size=0.5, 
-                                enter_editmode=False, 
-                                align='WORLD', 
-                                location=(0, 0, 0.01),
-                                scale=(1, 1, 1))
-
-        bpy.ops.object.mode_set(mode='EDIT', toggle=False)
-        bpy.ops.mesh.flip_normals()
-        bpy.ops.object.mode_set(mode='OBJECT', toggle=False)
-
-        plane = bpy.context.object
-        plane.name = 'CutPlane'
-        plane.data.name = 'CutPlane'
-        plane.display_type = 'WIRE'
-        plane.hide_render = True
-        plane.hide_set(True)
-        plane.parent = parent
+        plane = create_cut_plane(parent)
 
         cut_top_modifier["Socket_2"] = plane
 
-        bpy.ops.object.select_all(action='DESELECT')
-        parent.select_set(True)
-        bpy.context.view_layer.objects.active = parent
+        set_active(parent)
 
         return {'FINISHED'}
