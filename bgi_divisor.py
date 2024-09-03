@@ -6,7 +6,6 @@ def bgi_divisor_node_group():
 
 	bgi_divisor.is_modifier = True
 	
-	#initialize bgi_divisor nodes
 	#bgi_divisor interface
 	#Socket Geometry
 	geometry_socket = bgi_divisor.interface.new_socket(name = "Geometry", in_out='OUTPUT', socket_type = 'NodeSocketGeometry')
@@ -61,6 +60,7 @@ def bgi_divisor_node_group():
 	vertices_z_socket.attribute_domain = 'POINT'
 	
 	
+	#initialize bgi_divisor nodes
 	#node Frame.003
 	frame_003 = bgi_divisor.nodes.new("NodeFrame")
 	frame_003.label = "Create box"
@@ -89,16 +89,12 @@ def bgi_divisor_node_group():
 	math_004.use_clamp = False
 	#Value_001
 	math_004.inputs[1].default_value = 2.0
-	#Value_002
-	math_004.inputs[2].default_value = 0.5
 	
 	#node Math.005
 	math_005 = bgi_divisor.nodes.new("ShaderNodeMath")
 	math_005.name = "Math.005"
 	math_005.operation = 'ADD'
 	math_005.use_clamp = False
-	#Value_002
-	math_005.inputs[2].default_value = 0.5
 	
 	#node Combine XYZ
 	combine_xyz = bgi_divisor.nodes.new("ShaderNodeCombineXYZ")
@@ -130,16 +126,12 @@ def bgi_divisor_node_group():
 	math_010.use_clamp = False
 	#Value_001
 	math_010.inputs[1].default_value = 2.0
-	#Value_002
-	math_010.inputs[2].default_value = 0.5
 	
 	#node Math.009
 	math_009 = bgi_divisor.nodes.new("ShaderNodeMath")
 	math_009.name = "Math.009"
 	math_009.operation = 'ADD'
 	math_009.use_clamp = False
-	#Value_002
-	math_009.inputs[2].default_value = 0.5
 	
 	#node Switch.002
 	switch_002 = bgi_divisor.nodes.new("GeometryNodeSwitch")
@@ -333,6 +325,7 @@ def bgi_divisor_node_group():
 	#group_input_001.Vertices Z -> cube_001.Vertices Z
 	bgi_divisor.links.new(group_input_001.outputs[6], cube_001.inputs[3])
 	return bgi_divisor
+
 
 def bgi_divisor_create():
 	if "BGI Divisor" in bpy.data.node_groups:

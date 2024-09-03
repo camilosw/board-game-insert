@@ -3,12 +3,11 @@ import bpy
 from .bgi_divisor import bgi_divisor_create
 
 #initialize bgi_sides node group
-def bgi_sides_node_group(bgi_divisor):
+def bgi_sides_node_group():
 	bgi_sides = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Sides")
 
 	bgi_sides.is_modifier = True
 	
-	#initialize bgi_sides nodes
 	#bgi_sides interface
 	#Socket Geometry
 	geometry_socket_1 = bgi_sides.interface.new_socket(name = "Geometry", in_out='OUTPUT', socket_type = 'NodeSocketGeometry')
@@ -51,6 +50,7 @@ def bgi_sides_node_group(bgi_divisor):
 	orientation_socket_1.attribute_domain = 'POINT'
 	
 	
+	#initialize bgi_sides nodes
 	#node Frame.002
 	frame_002 = bgi_sides.nodes.new("NodeFrame")
 	frame_002.label = "Displace to side"
@@ -65,8 +65,6 @@ def bgi_sides_node_group(bgi_divisor):
 	math_008.use_clamp = False
 	#Value_001
 	math_008.inputs[1].default_value = 2.0
-	#Value_002
-	math_008.inputs[2].default_value = 0.5
 	
 	#node Math.006
 	math_006 = bgi_sides.nodes.new("ShaderNodeMath")
@@ -75,16 +73,12 @@ def bgi_sides_node_group(bgi_divisor):
 	math_006.use_clamp = False
 	#Value_001
 	math_006.inputs[1].default_value = 2.0
-	#Value_002
-	math_006.inputs[2].default_value = 0.5
 	
 	#node Math.007
 	math_007 = bgi_sides.nodes.new("ShaderNodeMath")
 	math_007.name = "Math.007"
 	math_007.operation = 'ADD'
 	math_007.use_clamp = False
-	#Value_002
-	math_007.inputs[2].default_value = 0.5
 	
 	#node Group Input.001
 	group_input_001_1 = bgi_sides.nodes.new("NodeGroupInput")
@@ -134,10 +128,6 @@ def bgi_sides_node_group(bgi_divisor):
 	vector_math = bgi_sides.nodes.new("ShaderNodeVectorMath")
 	vector_math.name = "Vector Math"
 	vector_math.operation = 'MULTIPLY'
-	#Vector_002
-	vector_math.inputs[2].default_value = (0.0, 0.0, 0.0)
-	#Scale
-	vector_math.inputs[3].default_value = 1.0
 	
 	#node Group Input.005
 	group_input_005 = bgi_sides.nodes.new("NodeGroupInput")
@@ -192,8 +182,6 @@ def bgi_sides_node_group(bgi_divisor):
 	boolean_math = bgi_sides.nodes.new("FunctionNodeBooleanMath")
 	boolean_math.name = "Boolean Math"
 	boolean_math.operation = 'NOT'
-	#Boolean_001
-	boolean_math.inputs[1].default_value = False
 	
 	#node Group
 	group = bgi_sides.nodes.new("GeometryNodeGroup")
@@ -327,12 +315,11 @@ def bgi_sides_node_group(bgi_divisor):
 	return bgi_sides
 
 #initialize bgi_small_division node group
-def bgi_small_division_node_group(bgi_divisor):
+def bgi_small_division_node_group():
 	bgi_small_division = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Small Division")
 
 	bgi_small_division.is_modifier = True
 	
-	#initialize bgi_small_division nodes
 	#bgi_small_division interface
 	#Socket Geometry
 	geometry_socket_2 = bgi_small_division.interface.new_socket(name = "Geometry", in_out='OUTPUT', socket_type = 'NodeSocketGeometry')
@@ -387,6 +374,7 @@ def bgi_small_division_node_group(bgi_divisor):
 	side_socket.attribute_domain = 'POINT'
 	
 	
+	#initialize bgi_small_division nodes
 	#node Frame
 	frame_1 = bgi_small_division.nodes.new("NodeFrame")
 	frame_1.label = "Length"
@@ -455,16 +443,12 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_010_1.name = "Math.010"
 	math_010_1.operation = 'SUBTRACT'
 	math_010_1.use_clamp = False
-	#Value_002
-	math_010_1.inputs[2].default_value = 0.5
 	
 	#node Math.013
 	math_013 = bgi_small_division.nodes.new("ShaderNodeMath")
 	math_013.name = "Math.013"
 	math_013.operation = 'ADD'
 	math_013.use_clamp = False
-	#Value_002
-	math_013.inputs[2].default_value = 0.5
 	
 	#node Switch
 	switch_1 = bgi_small_division.nodes.new("GeometryNodeSwitch")
@@ -488,8 +472,6 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_004_1.use_clamp = False
 	#Value_001
 	math_004_1.inputs[1].default_value = 2.0
-	#Value_002
-	math_004_1.inputs[2].default_value = 0.5
 	
 	#node Math.009
 	math_009_1 = bgi_small_division.nodes.new("ShaderNodeMath")
@@ -498,8 +480,6 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_009_1.use_clamp = False
 	#Value_001
 	math_009_1.inputs[1].default_value = 2.0
-	#Value_002
-	math_009_1.inputs[2].default_value = 0.5
 	
 	#node Group Input.002
 	group_input_002_1 = bgi_small_division.nodes.new("NodeGroupInput")
@@ -516,32 +496,24 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_006_1.name = "Math.006"
 	math_006_1.operation = 'SUBTRACT'
 	math_006_1.use_clamp = False
-	#Value_002
-	math_006_1.inputs[2].default_value = 0.5
 	
 	#node Math.011
 	math_011 = bgi_small_division.nodes.new("ShaderNodeMath")
 	math_011.name = "Math.011"
 	math_011.operation = 'ADD'
 	math_011.use_clamp = False
-	#Value_002
-	math_011.inputs[2].default_value = 0.5
 	
 	#node Math.014
 	math_014 = bgi_small_division.nodes.new("ShaderNodeMath")
 	math_014.name = "Math.014"
 	math_014.operation = 'SUBTRACT'
 	math_014.use_clamp = False
-	#Value_002
-	math_014.inputs[2].default_value = 0.5
 	
 	#node Math
 	math = bgi_small_division.nodes.new("ShaderNodeMath")
 	math.name = "Math"
 	math.operation = 'MULTIPLY'
 	math.use_clamp = False
-	#Value_002
-	math.inputs[2].default_value = 0.5
 	
 	#node Switch.002
 	switch_002_1 = bgi_small_division.nodes.new("GeometryNodeSwitch")
@@ -575,16 +547,12 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_012.use_clamp = False
 	#Value_001
 	math_012.inputs[1].default_value = 2.0
-	#Value_002
-	math_012.inputs[2].default_value = 0.5
 	
 	#node Math.008
 	math_008_1 = bgi_small_division.nodes.new("ShaderNodeMath")
 	math_008_1.name = "Math.008"
 	math_008_1.operation = 'ADD'
 	math_008_1.use_clamp = False
-	#Value_002
-	math_008_1.inputs[2].default_value = 0.5
 	
 	#node Math.005
 	math_005_1 = bgi_small_division.nodes.new("ShaderNodeMath")
@@ -593,8 +561,6 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_005_1.use_clamp = False
 	#Value_001
 	math_005_1.inputs[1].default_value = 4.0
-	#Value_002
-	math_005_1.inputs[2].default_value = 0.5
 	
 	#node Math.007
 	math_007_1 = bgi_small_division.nodes.new("ShaderNodeMath")
@@ -603,8 +569,6 @@ def bgi_small_division_node_group(bgi_divisor):
 	math_007_1.use_clamp = False
 	#Value_001
 	math_007_1.inputs[1].default_value = 4.0
-	#Value_002
-	math_007_1.inputs[2].default_value = 0.5
 	
 	#node Group Input.004
 	group_input_004_1 = bgi_small_division.nodes.new("NodeGroupInput")
@@ -683,8 +647,8 @@ def bgi_small_division_node_group(bgi_divisor):
 	group_input_2.location = (-327.630126953125, -486.745361328125)
 	
 	#Set dimensions
-	frame_1.width, frame_1.height = 962.6666870117188, 491.8333435058594
-	frame_001_1.width, frame_001_1.height = 1203.3333740234375, 598.5
+	frame_1.width, frame_1.height = 962.6666870117188, 486.5
+	frame_001_1.width, frame_001_1.height = 1203.3333740234375, 593.1666259765625
 	group_output_2.width, group_output_2.height = 140.0, 100.0
 	combine_xyz_003_1.width, combine_xyz_003_1.height = 140.0, 100.0
 	switch_001_1.width, switch_001_1.height = 140.0, 100.0
@@ -791,12 +755,11 @@ def bgi_small_division_node_group(bgi_divisor):
 	return bgi_small_division
 
 #initialize bgi_container node group
-def bgi_container_node_group(bgi_divisor, bgi_sides, bgi_small_division):
+def bgi_container_node_group():
 	bgi_container = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Container")
 
 	bgi_container.is_modifier = True
 	
-	#initialize bgi_container nodes
 	#bgi_container interface
 	#Socket Geometry
 	geometry_socket_3 = bgi_container.interface.new_socket(name = "Geometry", in_out='OUTPUT', socket_type = 'NodeSocketGeometry')
@@ -871,6 +834,7 @@ def bgi_container_node_group(bgi_divisor, bgi_sides, bgi_small_division):
 	offset_small_division_2_socket.attribute_domain = 'POINT'
 	
 	
+	#initialize bgi_container nodes
 	#node Frame
 	frame_2 = bgi_container.nodes.new("NodeFrame")
 	frame_2.label = "Base"
@@ -928,8 +892,6 @@ def bgi_container_node_group(bgi_divisor, bgi_sides, bgi_small_division):
 	math_1.use_clamp = False
 	#Value_001
 	math_1.inputs[1].default_value = 2.0
-	#Value_002
-	math_1.inputs[2].default_value = 0.5
 	
 	#node Reroute
 	reroute_2 = bgi_container.nodes.new("NodeReroute")
@@ -944,24 +906,18 @@ def bgi_container_node_group(bgi_divisor, bgi_sides, bgi_small_division):
 	math_001.use_clamp = False
 	#Value_001
 	math_001.inputs[1].default_value = 2.0
-	#Value_002
-	math_001.inputs[2].default_value = 0.5
 	
 	#node Math.002
 	math_002 = bgi_container.nodes.new("ShaderNodeMath")
 	math_002.name = "Math.002"
 	math_002.operation = 'ADD'
 	math_002.use_clamp = False
-	#Value_002
-	math_002.inputs[2].default_value = 0.5
 	
 	#node Math.003
 	math_003 = bgi_container.nodes.new("ShaderNodeMath")
 	math_003.name = "Math.003"
 	math_003.operation = 'ADD'
 	math_003.use_clamp = False
-	#Value_002
-	math_003.inputs[2].default_value = 0.5
 	
 	#node Transform Geometry
 	transform_geometry = bgi_container.nodes.new("GeometryNodeTransform")

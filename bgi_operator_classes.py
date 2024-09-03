@@ -31,7 +31,7 @@ def set_active(object):
     bpy.context.view_layer.objects.active = object
 
 class AddGameBox(Operator):
-    bl_idname = "mesh.gbi_game_box_add"
+    bl_idname = "mesh.bgi_game_box_add"
     bl_label = "Game Box"
     bl_description = "Add the Game Box object"
     bl_options = {'REGISTER', 'UNDO'}
@@ -51,7 +51,7 @@ class AddGameBox(Operator):
         return {'FINISHED'}
 
 class AddContainer(Operator):
-    bl_idname = "mesh.gbi_container_add"
+    bl_idname = "mesh.bgi_container_add"
     bl_label = "Container"
     bl_description = "Add the Container object"
     bl_options = {'REGISTER', 'UNDO'}
@@ -73,19 +73,19 @@ class AddContainer(Operator):
 
         return {'FINISHED'}
 
-class AddCardHolderHorizontal(Operator):
-    bl_idname = "mesh.gbi_card_holder_horizontal_add"
-    bl_label = "Card Holder Horizontal"
-    bl_description = "Add the Card Holder Horizontal object"
+class AddGridContainer(Operator):
+    bl_idname = "mesh.bgi_grid_container_add"
+    bl_label = "Grid Container"
+    bl_description = "Add the Grid Container object"
     bl_options = {'REGISTER', 'UNDO'}
 
     def execute(self, context):
-        mesh = bpy.data.meshes.new("CardHolderHorizontal")
+        mesh = bpy.data.meshes.new("GridContainer")
         object_data_add(context, mesh, operator=None)
         parent = bpy.context.object
         parent.show_wire = True
         
-        create_node(BGI_Node.CARD_HOLDER_HORIZONTAL)
+        create_node(BGI_Node.GRID_CONTAINER)
         cut_top_modifier = create_node(BGI_Node.CUT_TOP)
 
         plane = create_cut_plane(parent)

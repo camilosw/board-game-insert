@@ -1,11 +1,11 @@
 import bpy
-    
+
+#initialize bgi_game_box node group
 def bgi_game_box_node_group():
     bgi_game_box = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Game Box")
 
     bgi_game_box.is_modifier = True
     
-    #initialize bgi_game_box nodes
     #bgi_game_box interface
     #Socket Geometry
     geometry_socket = bgi_game_box.interface.new_socket(name = "Geometry", in_out='OUTPUT', socket_type = 'NodeSocketGeometry')
@@ -40,6 +40,7 @@ def bgi_game_box_node_group():
     depth_socket.attribute_domain = 'POINT'
     
     
+    #initialize bgi_game_box nodes
     #node Compare
     compare = bgi_game_box.nodes.new("FunctionNodeCompare")
     compare.name = "Compare"
@@ -48,28 +49,6 @@ def bgi_game_box_node_group():
     compare.operation = 'GREATER_THAN'
     #B
     compare.inputs[1].default_value = 0.0
-    #A_INT
-    compare.inputs[2].default_value = 0
-    #B_INT
-    compare.inputs[3].default_value = 0
-    #A_VEC3
-    compare.inputs[4].default_value = (0.0, 0.0, 0.0)
-    #B_VEC3
-    compare.inputs[5].default_value = (0.0, 0.0, 0.0)
-    #A_COL
-    compare.inputs[6].default_value = (0.0, 0.0, 0.0, 0.0)
-    #B_COL
-    compare.inputs[7].default_value = (0.0, 0.0, 0.0, 0.0)
-    #A_STR
-    compare.inputs[8].default_value = ""
-    #B_STR
-    compare.inputs[9].default_value = ""
-    #C
-    compare.inputs[10].default_value = 0.8999999761581421
-    #Angle
-    compare.inputs[11].default_value = 0.08726649731397629
-    #Epsilon
-    compare.inputs[12].default_value = 0.0010000000474974513
     
     #node Combine XYZ
     combine_xyz = bgi_game_box.nodes.new("ShaderNodeCombineXYZ")
@@ -111,8 +90,6 @@ def bgi_game_box_node_group():
     math.use_clamp = False
     #Value_001
     math.inputs[1].default_value = 2.0
-    #Value_002
-    math.inputs[2].default_value = 0.5
     
     #node Combine XYZ.001
     combine_xyz_001 = bgi_game_box.nodes.new("ShaderNodeCombineXYZ")
@@ -126,10 +103,6 @@ def bgi_game_box_node_group():
     vector_math = bgi_game_box.nodes.new("ShaderNodeVectorMath")
     vector_math.name = "Vector Math"
     vector_math.operation = 'ADD'
-    #Vector_002
-    vector_math.inputs[2].default_value = (0.0, 0.0, 0.0)
-    #Scale
-    vector_math.inputs[3].default_value = 1.0
     
     #node Delete Geometry
     delete_geometry = bgi_game_box.nodes.new("GeometryNodeDeleteGeometry")
@@ -164,10 +137,6 @@ def bgi_game_box_node_group():
     vector_math_001.operation = 'DOT_PRODUCT'
     #Vector_001
     vector_math_001.inputs[1].default_value = (0.0, 0.0, 1.0)
-    #Vector_002
-    vector_math_001.inputs[2].default_value = (0.0, 0.0, 0.0)
-    #Scale
-    vector_math_001.inputs[3].default_value = 1.0
     
     
     
@@ -181,8 +150,8 @@ def bgi_game_box_node_group():
     combine_xyz_001.location = (38.66666793823242, -174.0)
     vector_math.location = (232.0, -19.33333396911621)
     delete_geometry.location = (232.0, 309.3333435058594)
-    set_position.location = (425.3333435058594, 135.3333282470703)
-    group_output.location = (618.6666870117188, 135.3333282470703)
+    set_position.location = (440.0, 140.0)
+    group_output.location = (620.0, 140.0)
     group_input.location = (-367.3333435058594, 58.0)
     normal.location = (-367.3333435058594, 367.3333435058594)
     vector_math_001.location = (-135.3333282470703, 367.3333435058594)
