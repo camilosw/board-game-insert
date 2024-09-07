@@ -29,10 +29,10 @@ All the measurements are of the inside of the boxes.
 
 ![image](https://github.com/user-attachments/assets/e95b0019-c3c5-4504-80bd-173ff73e565a)
 
-# Card Holder Horizontal
+# Grid container
 
 Measurements are for the inside of individual containers.
 
-![image](https://github.com/user-attachments/assets/ec0027ca-41a2-4e87-a4a2-3422cf168a83)
+![Grid container](https://github.com/user-attachments/assets/88f69a5d-cc91-4a8e-8a45-d2ddddc1f16e)
 
-![image](https://github.com/user-attachments/assets/fbdde9e5-5543-40a2-a14f-5d8cc5c8bfbd)
+![grid container params](https://github.com/user-attachments/assets/52a632e8-5a74-44dd-8dba-90fe07ed808b)
