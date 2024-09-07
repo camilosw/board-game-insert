@@ -3,10 +3,11 @@ bl_info = {
     "author": "Camilo Mejia",
     "version": (1, 1, 0),
     "blender": (4, 1, 0),
-    "location": "View3D > Add > Mesh > New Object",
+    "location": "View3D > Add > Mesh > Board Game Insert",
     "description": "Adds objects to create board game inserts",
     "warning": "",
-    "doc_url": "",
+    "doc_url": "https://github.com/camilosw/board-game-insert",
+    "tracker_url": "https://github.com/camilosw/board-game-insert/issues",
     "category": "Add Mesh",
 }
 
