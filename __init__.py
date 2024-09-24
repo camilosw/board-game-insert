@@ -1,7 +1,7 @@
 bl_info = {
     "name": "Board Game Insert",
     "author": "Camilo Mejia",
-    "version": (1, 1, 0),
+    "version": (1, 2, 0),
     "blender": (4, 1, 0),
     "location": "View3D > Add > Mesh > Board Game Insert",
     "description": "Adds objects to create board game inserts",
@@ -29,6 +29,8 @@ class VIEW3D_MT_board_game_insert_add(Menu):
                         text="Container")
         layout.operator("mesh.bgi_grid_container_add",
                         text="Grid Container")
+        layout.operator("mesh.bgi_card_holder_add",
+                        text="Card Holder")
 
 def menu_func(self, context):
     layout = self.layout
@@ -42,6 +44,7 @@ classes = [
     bgi_operator_classes.AddGameBox,
     bgi_operator_classes.AddContainer,
     bgi_operator_classes.AddGridContainer,
+    bgi_operator_classes.AddCardHolder,
     VIEW3D_MT_board_game_insert_add
 ]
 

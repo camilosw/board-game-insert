@@ -95,3 +95,26 @@ class AddGridContainer(Operator):
         set_active(parent)
 
         return {'FINISHED'}
+    
+class AddCardHolder(Operator):
+    bl_idname = "mesh.bgi_card_holder_add"
+    bl_label = "Card Holder"
+    bl_description = "Add the Card Holder object"
+    bl_options = {'REGISTER', 'UNDO'}
+
+    def execute(self, context):
+        mesh = bpy.data.meshes.new("CardHolder")
+        object_data_add(context, mesh, operator=None)
+        parent = bpy.context.object
+        parent.show_wire = True
+        
+        create_node(BGI_Node.CARD_HOLDER)
+        cut_top_modifier = create_node(BGI_Node.CUT_TOP)
+
+        plane = create_cut_plane(parent)
+
+        cut_top_modifier["Socket_2"] = plane
+
+        set_active(parent)
+
+        return {'FINISHED'}
