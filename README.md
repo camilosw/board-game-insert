@@ -36,3 +36,11 @@ Measurements are for the inside of individual containers.
 ![Grid container](https://github.com/user-attachments/assets/88f69a5d-cc91-4a8e-8a45-d2ddddc1f16e)
 
 ![grid container params](https://github.com/user-attachments/assets/52a632e8-5a74-44dd-8dba-90fe07ed808b)
+
+# Card holder
+
+Measurements are for the inside of individual containers.
+
+![Card holder](https://github.com/user-attachments/assets/622692e3-de93-4db7-b28a-e84784c5cf9b)
+
+![Card holder params](https://github.com/user-attachments/assets/613d99f8-cdd9-419a-9717-7d3d0d9525f1)
