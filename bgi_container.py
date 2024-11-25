@@ -3,7 +3,7 @@ import bpy
 from .bgi_divisor import bgi_divisor_create
 
 #initialize bgi_sides node group
-def bgi_sides_node_group():
+def bgi_sides_node_group(bgi_divisor):
 	bgi_sides = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Sides")
 
 	bgi_sides.is_modifier = True
@@ -315,7 +315,7 @@ def bgi_sides_node_group():
 	return bgi_sides
 
 #initialize bgi_small_division node group
-def bgi_small_division_node_group():
+def bgi_small_division_node_group(bgi_divisor):
 	bgi_small_division = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Small Division")
 
 	bgi_small_division.is_modifier = True
@@ -755,7 +755,7 @@ def bgi_small_division_node_group():
 	return bgi_small_division
 
 #initialize bgi_container node group
-def bgi_container_node_group():
+def bgi_container_node_group(bgi_divisor, bgi_sides, bgi_small_division):
 	bgi_container = bpy.data.node_groups.new(type = 'GeometryNodeTree', name = "BGI Container")
 
 	bgi_container.is_modifier = True
